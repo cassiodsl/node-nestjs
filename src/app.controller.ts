@@ -15,6 +15,12 @@ export class AppController {
         return this.authService.login(req.user);
     }
 
+    @UseGuards()
+    @Get('profile')
+    getProfile(@Request() req) {
+        return req.user;
+    }
+
     @Get(':id')
     getHello(@Param('id') id): string {
         return this.appService.getHello();
